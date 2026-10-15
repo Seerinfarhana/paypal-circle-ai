@@ -1,0 +1,74 @@
+
+@'
+# PayPal Circle AI
+
+An AI-powered collaborative shopping prototype that helps groups discuss budgets, share preferences, compare products, vote on a purchase, and coordinate payment readiness.
+
+## Current Status
+
+The project currently contains a frontend mockup. Backend APIs, persistent database storage, live AI recommendations, real-time collaboration, and PayPal Sandbox payment integration are planned development milestones and are not yet integrated.
+
+## Planned Technology Stack
+
+- Frontend: React, Vite, TypeScript, Tailwind CSS
+- Backend: Python, FastAPI, Pydantic
+- Database and authentication: Supabase
+- AI: An LLM API with structured outputs and server-side validation
+- Product discovery: Channel3 API, subject to API access
+- Payments: PayPal Sandbox
+- Testing: Postman
+- Deployment: Vercel and Render
+
+## Planned User Flow
+
+1. Create a shopping circle for a group event.
+2. Discuss and approve a shared budget.
+3. Collect member preferences.
+4. Discover products and explain recommendations.
+5. Vote on a product and handle rejections.
+6. Record contributions and verify funding readiness.
+7. Check purchase conditions before starting checkout.
+
+The application will validate votes, permissions, budgets, and payment states on the backend. AI-generated suggestions will not independently authorize payments.
+
+## Run the Frontend
+
+Requirements: Node.js and npm.
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+To create a production build:
+
+```bash
+npm run build
+```
+
+## Backend
+
+The FastAPI backend will be added in a later milestone.
+
+## Environment Variables
+
+Use the `.env.example` files as templates. Create local environment files when required and provide your own credentials.
+
+Never commit real API keys, PayPal client secrets, database passwords, or Supabase service-role keys.
+
+## Development Roadmap
+
+- [x] Initial frontend mockup
+- [ ] Repository setup
+- [ ] FastAPI backend
+- [ ] Supabase database and authentication
+- [ ] AI-powered recommendations
+- [ ] Persistent group collaboration
+- [ ] PayPal Sandbox integration
+- [ ] Purchase workflow and deployment
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
+'@ | Set-Content -Path README.md -Encoding utf8

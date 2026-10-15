@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-page text-ink font-sans antialiased; }
+  :focus-visible { outline: 2px solid #0070E0; outline-offset: 2px; border-radius: 8px; }
+  h1, h2, h3 { letter-spacing: -0.02em; }
+}
+
+@layer components {
+  /* Magic-bento-style spotlight: soft glow that follows the cursor, small lift on hover */
+  .spot { position: relative; overflow: hidden; transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease; }
+  .spot:hover { transform: translateY(-3px); box-shadow: 0 22px 44px -22px rgba(0,28,100,.30); }
+  .spot::after { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .3s ease;
+    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(0,112,224,.10), transparent 62%); }
+  .spot:hover::after { opacity: 1; }
+
+  /* Glare hover for the featured recommendation */
+  .glare { position: relative; overflow: hidden; }
+  .glare::before { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.55) 50%, transparent 60%);
+    transform: translateX(-130%); transition: transform .9s ease; }
+  .glare:hover::before { transform: translateX(130%); }
+
+  .ai-surface { background: linear-gradient(180deg, rgba(0,112,224,.07), rgba(0,156,222,.03)); border: 1px solid rgba(0,112,224,.18); }
+  .navy-surface { background: linear-gradient(135deg, #001C64 0%, #0070E0 130%); }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { scrollbar-width: none; }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  .spot:hover { transform: none; }
+}
